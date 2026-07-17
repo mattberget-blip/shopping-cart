@@ -1,0 +1,35 @@
+.home {
+  max-width: 36rem;
+  margin: 0 auto;
+  padding: 3rem 0 4rem;
+  min-height: calc(100svh - 8rem);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.home__title {
+  font-family: var(--heading);
+  font-size: 50px;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  color: #74a8f7;
+  margin: 0 0 1.25rem;
+  line-height: 1.1;
+}
+
+.home__blurb {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: var(--text);
+  margin: 0 0 2rem;
+}
+
+.home__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+}

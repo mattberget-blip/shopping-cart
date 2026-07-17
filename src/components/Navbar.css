@@ -1,0 +1,95 @@
+.navbar {
+  width: 100%;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 2.5rem;
+}
+
+.navbar__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  width: 100%;
+  padding: 1.25rem 1.5rem;
+  box-sizing: border-box;
+}
+
+.navbar__brand {
+  font-family: var(--heading);
+  font-size: 60px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: #74a8f7;
+  text-decoration: none;
+  margin-right: auto;
+}
+
+.navbar__brand:hover {
+  color: #74a8f7;
+}
+
+.navbar__links {
+  display: flex;
+  gap: 1.75rem;
+  margin-left: auto;
+  flex-shrink: 0;
+  align-items: flex-end;
+}
+
+.navbar__link {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+  color: var(--text);
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: color 0.15s ease;
+}
+
+.navbar__link:hover,
+.navbar__link.active {
+  color: var(--accent);
+}
+
+.navbar__link-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.navbar__icon {
+  width: 1.35rem;
+  height: 1.35rem;
+  display: block;
+}
+
+.navbar__cart-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1.35rem;
+  height: 1.35rem;
+  padding: 0 0.35rem;
+  border-radius: 999px;
+  background: var(--accent);
+  color: var(--bg);
+  font-size: 0.75rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+@media (max-width: 640px) {
+  .navbar__brand {
+    font-size: clamp(1.5rem, 8vw, 2.5rem);
+  }
+
+  .navbar__links {
+    gap: 1rem;
+  }
+
+  .navbar__link {
+    font-size: 0.8rem;
+  }
+}
