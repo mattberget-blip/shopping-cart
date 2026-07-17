@@ -51,7 +51,9 @@ export function Navbar() {
             <HomeIcon />
           </NavLink>
           <NavLink to="/browse" className="navbar__link">
-            <span className="navbar__link-label">Browse Products</span>
+            <span className="navbar__link-label">
+              Browse<span className="navbar__link-extra"> Products</span>
+            </span>
             <BrowseIcon />
           </NavLink>
           <NavLink to="/cart" className="navbar__link navbar__cart-link">
