@@ -39,7 +39,7 @@ const emptyForm: CheckoutForm = {
 }
 
 export function CartPage() {
-  const { items, total, updateQuantity } = useCart()
+  const { items, total, updateQuantity, clearCart } = useCart()
   const location = useLocation()
   const navigate = useNavigate()
   const buyNowProduct = (location.state as CartLocationState | null)?.buyNow
@@ -79,9 +79,14 @@ export function CartPage() {
           <h1 className="cart__title">Your cart</h1>
           <p className="cart__subtitle">Your cart is empty.</p>
         </header>
-        <Link to="/browse" className="btn btn--primary">
-          Start Shopping
-        </Link>
+        <div className="cart__footer-actions">
+          <Link to="/browse" className="btn btn--primary">
+            Start Shopping
+          </Link>
+          <button type="button" className="btn btn--ghost" disabled>
+            Empty Cart
+          </button>
+        </div>
       </section>
     )
   }
@@ -195,6 +200,17 @@ export function CartPage() {
           <Link to="/browse" className="btn btn--ghost">
             Continue Shopping
           </Link>
+          <button
+            type="button"
+            className="btn btn--ghost"
+            onClick={() => {
+              clearCart()
+              setShowCheckout(false)
+              setSubmitted(false)
+            }}
+          >
+            Empty Cart
+          </button>
           {!showCheckout && (
             <button
               type="button"
