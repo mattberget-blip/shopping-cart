@@ -6,7 +6,7 @@ export function HomePage() {
     <section className="home">
       <h1 className="home__title">Welcome to FrontendFuture</h1>
       <p className="home__blurb">
-        Your destination for all cool tech gadgets and essentials. Build out the gamer's dream desk setup, pick out stylish attire to look and feel like a boss...and so much more! 
+        Your destination for all cool tech gadgets, personal essentials and home decor. Build out the gamer's dream desk setup, pick out stylish attire to look and feel like a boss...and so much more! 
         We offer the best quality items at knockout prices. 
         Shop with ease...click click ship!
       </p>
