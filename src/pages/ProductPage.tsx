@@ -1,31 +1,9 @@
 import { useEffect, useState } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
+import { fetchProductById } from '../api/products'
 import { useCart } from '../context/CartContext'
 import type { Product } from '../types/product'
 import './ProductPage.css'
-
-type FakeStoreProduct = {
-  id: number
-  title: string
-  price: number
-  description: string
-  category: string
-  image: string
-  rating: {
-    rate: number
-    count: number
-  }
-}
-
-function mapFakeStoreProduct(item: FakeStoreProduct): Product {
-  return {
-    id: String(item.id),
-    name: item.title,
-    price: item.price,
-    description: item.description,
-    image: item.image,
-  }
-}
 
 export function ProductPage() {
   const { id } = useParams<{ id: string }>()
@@ -53,18 +31,9 @@ export function ProductPage() {
         setIsLoading(true)
         setError(null)
 
-        const response = await fetch(`https://fakestoreapi.com/products/${id}`)
-        if (!response.ok) {
-          throw new Error(
-            response.status === 404
-              ? 'Product not found'
-              : `Failed to load product (${response.status})`,
-          )
-        }
-
-        const data: FakeStoreProduct = await response.json()
+        const nextProduct = await fetchProductById(id!)
         if (!cancelled) {
-          setProduct(mapFakeStoreProduct(data))
+          setProduct(nextProduct)
         }
       } catch (err) {
         if (!cancelled) {

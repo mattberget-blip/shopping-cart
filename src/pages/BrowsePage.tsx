@@ -1,30 +1,8 @@
 import { useEffect, useState } from 'react'
+import { fetchBrowseProducts } from '../api/products'
 import { ProductCard } from '../components/ProductCard'
 import type { Product } from '../types/product'
 import './BrowsePage.css'
-
-type FakeStoreProduct = {
-  id: number
-  title: string
-  price: number
-  description: string
-  category: string
-  image: string
-  rating: {
-    rate: number
-    count: number
-  }
-}
-
-function mapFakeStoreProduct(item: FakeStoreProduct): Product {
-  return {
-    id: String(item.id),
-    name: item.title,
-    price: item.price,
-    description: item.description,
-    image: item.image,
-  }
-}
 
 export function BrowsePage() {
   const [productList, setProductList] = useState<Product[]>([])
@@ -39,16 +17,9 @@ export function BrowsePage() {
         setIsLoading(true)
         setError(null)
 
-        const response = await fetch('https://fakestoreapi.com/products')
-        if (!response.ok) {
-          throw new Error(`Failed to load products (${response.status})`)
-        }
-
-        const data: FakeStoreProduct[] = await response.json()
-        const nextNine = data.slice(9, 18).map(mapFakeStoreProduct)
-
+        const products = await fetchBrowseProducts()
         if (!cancelled) {
-          setProductList(nextNine)
+          setProductList(products)
         }
       } catch (err) {
         if (!cancelled) {
@@ -72,9 +43,7 @@ export function BrowsePage() {
     <section className="browse">
       <header className="browse__header">
         <h1 className="browse__title">Take a look!</h1>
-        <p className="browse__subtitle">
-          Explore our full collection
-        </p>
+        <p className="browse__subtitle">Explore our full collection</p>
       </header>
 
       {isLoading && <p className="browse__status">Loading products…</p>}
