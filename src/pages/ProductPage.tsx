@@ -92,8 +92,7 @@ export function ProductPage() {
 
   function handleBuyNow() {
     if (!product) return
-    addItem(product)
-    navigate('/cart')
+    navigate('/cart', { state: { buyNow: product } })
   }
 
   if (isLoading) {
